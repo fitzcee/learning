@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="stylesheet" 
+    href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+    <base target="_top">
+  </head>
+  <body>
+    <h1>A web site</h1>
+    <p>Can be created dynamically by Apps Script</p>
+    <p>this one has been created by using a template</p>
+    <h2>Here are the parameters</h2>
+    <table id="table" style="width:30%;">
+      <tr><th>parameter </th><th>value</th></tr>
+      <? getParameters().map(function(d) { ?><tr>
+        <td><?= d.parameter ?></td> 
+        <td><?= d.value  ?></td>
+        </tr>
+      <? }); ?>
+      </table>
+  </body>
+</html>
+
+
+
+

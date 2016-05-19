@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" 
+       href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+    <base target="_top">
+  </head>
+  <body>
+    <h1>A web site</h1>
+    <p>Can be created dynamically by Apps Script</p>
+    <p>this one has been created by using google.script.run</p>
+    <h2>Here are the parameters</h2>
+    <table id="table" style="width:30%;">
+      <tr><th>parameter </th><th>value</th></tr>
+    </table>
+  <div id="errors"></div>
+  </body>
+  
+  <script>
+  
+  // when everything is loaded
+  window.onload = function() {
+   
+   // execute async request
+   google.script.run
+   
+   // what to do if it fails
+   .withFailureHandler (function(e) {
+     document.getElementById('errors')
+     .innerHTML = 'failed with error ' + e.toString();
+   })
+   
+   // what to do if it succeeds
+   .withSuccessHandler(function(data) {
+     var table = document.getElementById('table');
+     data.forEach(function(d) {
+       
+       // add a row
+       var row = document.createElement("tr");
+       table.appendChild (row);
+       
+       // add the cells  
+       ['parameter','value'].forEach(function(k) {
+         var td = document.createElement('td');
+         td.innerHTML = d[k];
+         row.appendChild (td);
+       });
+     });
+   })
+   
+   // this is what to execute asynchronously
+   .getParameters();
+  };
+  </script>
+</html>
+
+
+
+

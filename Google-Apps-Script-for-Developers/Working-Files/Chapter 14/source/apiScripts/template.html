@@ -1,0 +1,26 @@
+<link rel="stylesheet" 
+ href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+
+<h1>Blogger Data</h1>
+<p>From the Blogger API</p>
+<h2>Here are some blog post titles</h2>
+
+<table id="table" style="width:80%;">
+<tr>
+<th>title </th>
+<th>author </th>
+<th>published</th>
+</tr>
+<? getPosts().items.map(function(d) { ?><tr>
+  <td><?= d.title ?></td> 
+  <td><?= d.author.displayName  ?></td>
+  <td><?= d.published ?></td>
+  </tr>
+<? }); ?>
+</table>
+      
+
+
+
+
+
