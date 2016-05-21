@@ -2,6 +2,9 @@ package com.infiniteskills.gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Iterator;
+import java.util.Map;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -11,7 +14,9 @@ public class PasswordManager extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JPanel contentPane = null;
 	JDesktopPane desktopPane = null;
-
+	private PasswordCollection pm = null;
+	private JInternalFrame jifPasswordDataEditor;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -29,6 +34,7 @@ public class PasswordManager extends JFrame {
 		JMenu mnFile = new JMenu("File");
 		mb.add(mnFile);
 		
+		//exit
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -44,16 +50,27 @@ public class PasswordManager extends JFrame {
 		});
 		mnFile.add(mntmExit);
 		
+		//Passwords
 		JMenu mnPasswords = new JMenu("Passwords");
 		mb.add(mnPasswords);
 		
-		JMenuItem mntmPwdItems = new JMenuItem("Get");
+		//Get the current passwords and display them.
+		JMenuItem mntmPwdItems = new JMenuItem("Password Data");
+		
 		mntmPwdItems.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				//do something
+				jifPasswordDataEditor = new PasswordDataEditor();
+				jifPasswordDataEditor.setBounds(0, 0, program.WIDTH, program.HEIGHT);
+				desktopPane.add(jifPasswordDataEditor);
 			}
 		});
 		mnPasswords.add(mntmPwdItems);
+		
+		setBackground(Color.WHITE);
+		setResizable(false);
+		
+		//pack and show:
+		pack();
+		setVisible(true);
 	}
 }
